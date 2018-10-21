@@ -11,8 +11,7 @@ namespace ExtensionsUnitTests
     public class DiceMachine
     {
 
-        //[Fact(Skip = "For Debugging the DiceMachine")]
-        [Fact]
+        [Fact(Skip = "For Debugging the DiceMachine")]
         public void PickWithSixtyPercentChanceOneOfThreeItems()
         {
             Random rng = new Random();
