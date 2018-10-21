@@ -28,7 +28,7 @@ namespace BobbeyExtensions
             foreach (float p in probabilities)
             {
                 double nextsum = sum + p;
-                //string lowerLimit = 
+                nextsum = Math.Round(nextsum, 4);
 
                 intervals.Add($"[ {sum.ToString("G",CultureInfo.InvariantCulture)} , {nextsum.ToString("G",CultureInfo.InvariantCulture)})");
                 sum = nextsum;
