@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Text.RegularExpressions;
+using System.Globalization;
 
 namespace BobbeyExtensions
 {
@@ -101,6 +102,71 @@ namespace BobbeyExtensions
                     return false;
                 }
             } else {
+
+                if (number < lowerLimit)
+                {
+                    return false;
+                }
+            }
+
+            if (isTopOpen)
+            {
+                if (number >= upperLimit)
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                if (number > upperLimit)
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+
+        /// <summary>
+        /// Determins if the given float is contained by the defined interval.
+        /// digits valued lower 1, are '.' seperated (Culture Invariant)
+        /// </summary>
+        /// <param name="number"></param>
+        /// <param name="interval">Well defined interval as specified in ISO 31-11</param>
+        /// <returns>bool isInInterval</returns>
+        public static bool IsInInterval(this double number, string interval)
+        {
+
+            Match x = Regex.Match(interval.Replace(" ", string.Empty), @"(\[|\()(\d+(\.\d+)?\d*)\,(\d+(\.\d+)?\d*)(\)|\])");
+
+            if (!x.Success)
+            {
+                throw new ArgumentException("given string is not a well formed interval as specified in ISO 31-11.", nameof(interval));
+            }
+
+            bool isTopOpen = x.Groups[4].Value != "]";
+            bool IsBottomOpen = x.Groups[1].Value != "[";
+
+
+            double lowerLimit = double.Parse(x.Groups[2].Value, CultureInfo.InvariantCulture);
+            double upperLimit = double.Parse(x.Groups[4].Value, CultureInfo.InvariantCulture);
+
+            if (upperLimit < lowerLimit)
+            {
+                throw new ArgumentException("given string is not well formed as specified in ISO 31-11. Check the order of your Parameters, try to switch them.", nameof(interval));
+            }
+
+
+            if (IsBottomOpen)
+            {
+                if (number <= lowerLimit)
+                {
+                    return false;
+                }
+            }
+            else
+            {
 
                 if (number < lowerLimit)
                 {
