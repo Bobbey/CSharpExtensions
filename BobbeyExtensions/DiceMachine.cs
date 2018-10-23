@@ -39,11 +39,11 @@ namespace BobbeyExtensions
                 throw new ArgumentException("Your probabilities should sum up to 1.");
             }
 
-
+            double roll = rng.NextDouble();
 
             for (int i = 0; i < intervals.Count; i++)
             {
-                if (rng.NextDouble().IsInInterval(intervals[i]))
+                if (roll.IsInInterval(intervals[i]))
                 {
                     return results[i];
                 }
