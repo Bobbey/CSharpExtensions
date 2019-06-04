@@ -65,7 +65,7 @@ namespace ExtensionsUnitTests
 
 
         [Fact]
-        public void ThrowsException()
+        public void UpperLimitSmallerThanLowerLimitIntervalThrowsArgumentException()
         {
 
             try

@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BobbeyExtensions\BobbeyExtensions.csproj" />
+    <ProjectReference Include="..\MathToolset\MathToolset.csproj" />
   </ItemGroup>
 
 </Project>

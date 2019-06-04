@@ -91,7 +91,7 @@ namespace Topology
 
             if (upperLimit < lowerLimit)
             {
-                throw new ArgumentException("given string is not well formed as specified in ISO 31-11. Check the order of your Parameters, try to switch them.", nameof(interval));
+                throw new ArgumentException("given string is not well formed as specified in ISO 31-11. Check the order of your limits, try to switch them.", nameof(interval));
             }
 
 
