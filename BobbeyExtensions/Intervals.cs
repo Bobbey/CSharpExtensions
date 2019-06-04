@@ -2,7 +2,7 @@
 using System.Text.RegularExpressions;
 using System.Globalization;
 
-namespace BobbeyExtensions
+namespace Topology
 {
     public static class Intervals
     {
